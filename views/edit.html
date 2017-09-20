@@ -1,0 +1,47 @@
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title><%=title%></title>
+    <style>
+        form {
+            margin: 0;
+        }
+        textarea {
+            display: block;
+        }
+    </style>
+    <link rel="stylesheet" href="/themes/default/default.css" />
+    <script charset="utf-8" src="/kindeditor-all-min.js"></script>
+    <script charset="utf-8" src="/lang/zh-CN.js"></script>
+    <script>
+        var editor;
+        KindEditor.ready(function(K) {
+            editor = K.create('textarea[name="content"]', {
+                allowFileManager : true,
+                uploadJson: '/users/uploadImg'
+            });
+            K('input[name=save]').click(function(e) {
+                var title = document.getElementById('title').value;
+                var content = editor.html();
+                K.ajax('/users/saveArticle', function(data) {
+                    console.log(data);
+                }, 'POST', {
+                    title: title,
+                    content : content
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+<form>
+    <p>标题：<input type="text" id="title"></p>
+    <textarea name="content" style="width: 100%; height:600px; visibility:hidden;">KindEditor</textarea>
+    <p>
+        <input type="button" name="save" value="保存" />
+    </p>
+</form>
+</body>
+</html>

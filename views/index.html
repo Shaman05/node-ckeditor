@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>文章管理</title>
+</head>
+<body>
+<a href="/edit">新建文章</a>
+<h3>文章列表</h3>
+<ul>
+    <% for(var i=0; i<articles.length; i++) {%>
+    <li><span><%= articles[i].title %></span> - <span><%= articles[i].time %></span> <a href="/view?id=<%=articles[i].id%>">查看</a></li>
+    <% } %>
+</ul>
+</body>
+</html>
