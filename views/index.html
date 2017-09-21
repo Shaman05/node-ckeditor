@@ -15,9 +15,22 @@
         <h4><%= articles[i].title %>&nbsp;&nbsp;<span class="time"><%= articles[i].time %></span></h4>
         <a href="/view?id=<%=articles[i].id%>">查看</a>
         <a href="/edit?id=<%=articles[i].id%>">编辑</a>
-        <a href="/delete?id=<%=articles[i].id%>">删除</a>
+        <a href="javascript:" class="delete" data-id="<%=articles[i].id%>">删除</a>
     </li>
     <% } %>
 </ul>
+<script>
+    var deletes = document.querySelectorAll('.delete');
+    for(var i = 0; i < deletes.length; i++){
+        (function (index) {
+            deletes[i].onclick = function () {
+                var id = deletes[index].getAttribute('data-id');
+                if(confirm('确定要删除吗？')){
+                    window.location.href = "/delete?id=" + id;
+                }
+            };
+        })(i);
+    }
+</script>
 </body>
 </html>
