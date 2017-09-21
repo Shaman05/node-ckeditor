@@ -19,6 +19,11 @@ var app = express();
 app.set('views', path.join(__dirname , 'views') );
 app.engine('.html', require('ejs').__express);
 app.set('view engine', 'html');
+app.set('view cache', false);
+app.get("/*",function (req, res, next) {
+  res.setHeader('Last-Modified',(new Date()).toUTCString());
+  next();
+});
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));

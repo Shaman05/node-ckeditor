@@ -27,7 +27,11 @@
                 var title = document.getElementById('title').value;
                 var content = editor.html();
                 K.ajax('/users/saveArticle', function(data) {
-                    console.log(data);
+                    if(data.error == 1){
+                        alert(data.message);
+                    }else{
+                        alert('保存成功！');
+                    }
                 }, 'POST', {
                     id: aid,
                     title: title,
