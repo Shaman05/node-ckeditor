@@ -49,10 +49,16 @@ a{
   border-radius: 4px;
 }
 
+.details-page{
+  background: #9c9c9c;
+}
 .details{
   width: 900px;
   margin: 0 auto;
-  padding: 0 30px;
+  padding: 30px;
+  background: #fff;
+  margin-top: -30px;
+  min-height: 600px;
 }
 .details .head{
   text-align: center;
