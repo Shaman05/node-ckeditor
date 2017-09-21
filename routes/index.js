@@ -40,9 +40,6 @@ router.get('/delete', function(req, res, next) {
     }
   });
 });
-router.get('/edit', function(req, res, next) {
-  res.end('edit article!');
-});
 
 router.get('/edit', function(req, res, next) {
   res.render('edit', { title: '编辑器' });
