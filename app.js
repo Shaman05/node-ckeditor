@@ -21,7 +21,7 @@ app.engine('.html', require('ejs').__express);
 app.set('view engine', 'html');
 app.set('view cache', false);
 app.get("/*",function (req, res, next) {
-  res.setHeader('Last-Modified',(new Date()).toUTCString());
+  res.setHeader('Last-Modified', (new Date()).toUTCString());
   next();
 });
 

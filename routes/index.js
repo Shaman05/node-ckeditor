@@ -14,6 +14,7 @@ router.get('/', function(req, res, next) {
       data.push(require(path.join(baseDir, file)));
     }
   });
+  console.log(+new Date());
   res.render('index', { articles: data });
 });
 
