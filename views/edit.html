@@ -3,7 +3,7 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title><%=title%></title>
+    <title><%=pageTitle%></title>
     <style>
         form {
             margin: 0;
@@ -16,6 +16,7 @@
     <script charset="utf-8" src="/kindeditor-all-min.js"></script>
     <script charset="utf-8" src="/lang/zh-CN.js"></script>
     <script>
+        var aid = '<%=id%>';
         var editor;
         KindEditor.ready(function(K) {
             editor = K.create('textarea[name="content"]', {
@@ -28,6 +29,7 @@
                 K.ajax('/users/saveArticle', function(data) {
                     console.log(data);
                 }, 'POST', {
+                    id: aid,
                     title: title,
                     content : content
                 });
@@ -37,8 +39,8 @@
 </head>
 <body>
 <form>
-    <p>标题：<input type="text" id="title"></p>
-    <textarea name="content" style="width: 100%; height:600px; visibility:hidden;">KindEditor</textarea>
+    <p>标题：<input type="text" id="title" value="<%=title%>"></p>
+    <textarea name="content" style="width: 100%; height:600px; visibility:hidden;"><%=content%></textarea>
     <p>
         <input type="button" name="save" value="保存" />
     </p>

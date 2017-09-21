@@ -42,7 +42,26 @@ router.get('/delete', function(req, res, next) {
 });
 
 router.get('/edit', function(req, res, next) {
-  res.render('edit', { title: '编辑器' });
+  var id = req.query.id;
+  if(id){
+    var baseDir = path.resolve(__dirname, `../public/articles/`);
+    var fileName = `file_${id}.json`;
+    var data = require(path.join(baseDir, fileName));
+    res.render('edit', {
+      pageTitle: '编辑文章：' + data.title,
+      id: id,
+      title: data.title,
+      content: data.content
+    });
+  }else{
+    res.render('edit', {
+      pageTitle: '新建文章',
+      id: '',
+      time: '',
+      title: '',
+      content: ''
+    });
+  }
 });
 
 module.exports = router;

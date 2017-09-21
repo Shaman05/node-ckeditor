@@ -10,9 +10,12 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/saveArticle', function (req, res, next) {
+  var id = req.body.id;
+  if(!id){
+    id = Math.random().toString(32).substring(2, 32);
+  }
   var title = req.body.title || '无标题';
   var content = req.body.content;
-  var id = Math.random().toString(32).substring(2, 32);
   var data = {
     id: id,
     time: new Date().toLocaleString(),
