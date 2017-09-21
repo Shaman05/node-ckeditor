@@ -14,7 +14,7 @@
     <li>
         <h4><%= articles[i].title %>&nbsp;&nbsp;<span class="time"><%= articles[i].time %></span></h4>
         <a href="/view?id=<%=articles[i].id%>">查看</a>
-        <a href="javascript:alert('todo')">编辑</a>
+        <a href="/edit?id=<%=articles[i].id%>">编辑</a>
         <a href="/delete?id=<%=articles[i].id%>">删除</a>
     </li>
     <% } %>

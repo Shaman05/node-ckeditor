@@ -26,6 +26,8 @@ router.post('/saveArticle', function (req, res, next) {
         message: err
       });
     }else{
+      //备份
+      fs.writeFile(path.resolve(__dirname, `../public/bak/file_${id}.json`), JSON.stringify(data, true, 2), function (err) {});
       res.send({
         error: 0,
         info: data

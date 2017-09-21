@@ -35,8 +35,13 @@ router.get('/delete', function(req, res, next) {
   fs.unlink(path.join(baseDir, fileName), function (err) {
     if(!err){
       res.redirect('/');
+    }else{
+      res.end('删除失败！');
     }
   });
+});
+router.get('/edit', function(req, res, next) {
+  res.end('edit article!');
 });
 
 router.get('/edit', function(req, res, next) {
