@@ -3,13 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <title>文章管理</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
 <body>
-<a href="/edit">新建文章</a>
-<h3>文章列表</h3>
-<ul>
+<div class="tool-bar">
+    <a href="/edit">新建文章</a>
+</div>
+<ul class="article-list">
     <% for(var i=0; i<articles.length; i++) {%>
-    <li><span><%= articles[i].title %></span> - <span><%= articles[i].time %></span> <a href="/view?id=<%=articles[i].id%>">查看</a></li>
+    <li>
+        <h4><%= articles[i].title %>&nbsp;&nbsp;<span class="time"><%= articles[i].time %></span></h4>
+        <a href="/view?id=<%=articles[i].id%>">查看</a>
+        <a href="/view?id=<%=articles[i].id%>">编辑</a>
+        <a href="/view?id=<%=articles[i].id%>">删除</a>
+    </li>
     <% } %>
 </ul>
 </body>

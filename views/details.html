@@ -3,10 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>文章查看</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
 <body>
-<h3><%=title%></h3>
-<p><%=time%></p>
-<div><%-content%></div>
+<div class="details">
+    <div class="head">
+        <h3><%=title%></h3>
+        <p><%=time%></p>
+    </div>
+    <div><%-content%></div>
+</div>
 </body>
 </html>
