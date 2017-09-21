@@ -39,7 +39,8 @@ a{
   color: #999999;
   font-weight: normal;
 }
-.article-list li a{
+.article-list li a,
+.details .head a{
   display: inline-block;
   height: 20px;
   line-height: 20px;
@@ -54,7 +55,8 @@ a{
   padding-bottom: 0;
   margin: 0;
 }
-.details{
+.details,
+.edit-page{
   width: 900px;
   margin: 0 auto;
   padding: 30px;
@@ -67,4 +69,10 @@ a{
   padding: 0 0 10px 0;
   margin-bottom: 20px;
   border-bottom: 1px dotted #c3c3c3;
+  position: relative;
+}
+.details .head a{
+  position: absolute;
+  right: 0px;
+  bottom: 20px;
 }

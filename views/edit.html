@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <title><%=pageTitle%></title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
     <style>
         form {
             margin: 0;
@@ -28,6 +29,7 @@
                 var content = editor.html();
                 K.ajax('/users/saveArticle', function(data) {
                     if(data.error == 1){
+                        console.log(data.message)
                         alert(data.message);
                     }else{
                         alert('保存成功！');
@@ -42,13 +44,15 @@
         });
     </script>
 </head>
-<body>
-<form>
-    <p>标题：<input type="text" id="title" value="<%=title%>"></p>
-    <textarea name="content" style="width: 100%; height:600px; visibility:hidden;"><%=content%></textarea>
-    <p>
-        <input type="button" name="save" value="保存" />
-    </p>
-</form>
+<body class="details-page">
+<div class="edit-page">
+    <form>
+        <p>标题：<input type="text" id="title" value="<%=title%>"></p>
+        <textarea name="content" style="width: 100%; height:600px; visibility:hidden;"><%=content%></textarea>
+        <p>
+            <input type="button" name="save" value="保存" />
+        </p>
+    </form>
+</div>
 </body>
 </html>

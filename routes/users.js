@@ -11,41 +11,68 @@ router.get('/', function(req, res, next) {
 
 router.post('/saveArticle', function (req, res, next) {
   var id = req.body.id;
-  var baseDir = path.resolve(__dirname, `../public/articles/`);
-  var fileName = `file_${id}.json`;
-  fs.unlink(path.join(baseDir, fileName), function (err) {
-    if(!err){
-      var id = Math.random().toString(32).substring(2, 32);
-      var title = req.body.title || '无标题';
-      var content = req.body.content;
-      var data = {
-        id: id,
-        time: new Date().toLocaleString(),
-        title: title,
-        content: content
-      };
-      fs.writeFile(path.resolve(__dirname, `../public/articles/file_${id}.json`), JSON.stringify(data, true, 2), function (err) {
-        if(err){
-          res.send({
-            error: 1,
-            message: err
-          });
-        }else{
-          //备份
-          fs.writeFile(path.resolve(__dirname, `../public/bak/file_${id}.json`), JSON.stringify(data, true, 2), function (err) {});
-          res.send({
-            error: 0,
-            info: data
-          });
-        }
-      });
-    }else{
-      res.send({
-        error: 1,
-        message: err
-      });
-    }
-  });
+  if(!id){
+    id = Math.random().toString(32).substring(2, 32);
+    var title = req.body.title || '无标题';
+    var content = req.body.content;
+    var data = {
+      id: id,
+      time: new Date().toLocaleString(),
+      title: title,
+      content: content
+    };
+    fs.writeFile(path.resolve(__dirname, `../public/articles/file_${id}.json`), JSON.stringify(data, true, 2), function (err) {
+      if(err){
+        res.send({
+          error: 1,
+          message: err
+        });
+      }else{
+        //备份
+        fs.writeFile(path.resolve(__dirname, `../public/bak/file_${id}.json`), JSON.stringify(data, true, 2), function (err) {});
+        res.send({
+          error: 0,
+          info: data
+        });
+      }
+    });
+  }else{
+    var baseDir = path.resolve(__dirname, `../public/articles/`);
+    var fileName = `file_${id}.json`;
+    fs.unlink(path.join(baseDir, fileName), function (err) {
+      if(!err){
+        var id = Math.random().toString(32).substring(2, 32);
+        var title = req.body.title || '无标题';
+        var content = req.body.content;
+        var data = {
+          id: id,
+          time: new Date().toLocaleString(),
+          title: title,
+          content: content
+        };
+        fs.writeFile(path.resolve(__dirname, `../public/articles/file_${id}.json`), JSON.stringify(data, true, 2), function (err) {
+          if(err){
+            res.send({
+              error: 1,
+              message: err
+            });
+          }else{
+            //备份
+            fs.writeFile(path.resolve(__dirname, `../public/bak/file_${id}.json`), JSON.stringify(data, true, 2), function (err) {});
+            res.send({
+              error: 0,
+              info: data
+            });
+          }
+        });
+      }else{
+        res.send({
+          error: 1,
+          message: err
+        });
+      }
+    });
+  }
 });
 
 router.post('/uploadImg', function(req, res, next) {

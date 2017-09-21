@@ -24,6 +24,7 @@ router.get('/view', function(req, res, next) {
   var fileName = `file_${id}.json`;
   var data = require(path.join(baseDir, fileName));
   res.render('details', {
+    id: id,
     title: data.title,
     time: data.time,
     content: data.content

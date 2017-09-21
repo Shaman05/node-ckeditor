@@ -10,6 +10,9 @@
     <div class="head">
         <h3><%=title%></h3>
         <p><%=time%></p>
+        <% if(id){ %>
+        <a class="fixed_edit" href="/edit?id=<%=id%>">编辑</a>
+        <% } %>
     </div>
     <div><%-content%></div>
 </div>
