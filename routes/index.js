@@ -28,6 +28,16 @@ router.get('/view', function(req, res, next) {
     content: data.content
   });
 });
+router.get('/delete', function(req, res, next) {
+  var id = req.query.id;
+  var baseDir = path.resolve(__dirname, `../public/articles/`);
+  var fileName = `file_${id}.json`;
+  fs.unlink(path.join(baseDir, fileName), function (err) {
+    if(!err){
+      res.redirect('/');
+    }
+  });
+});
 
 router.get('/edit', function(req, res, next) {
   res.render('edit', { title: '编辑器' });
