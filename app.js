@@ -55,7 +55,7 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-var port = 80;
+var port = 8089;
 var server = http.createServer(app);
 server.listen(port, function () {
   console.log(`server start at port: ${port}`);

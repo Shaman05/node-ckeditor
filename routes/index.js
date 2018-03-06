@@ -66,4 +66,12 @@ router.get('/edit', function(req, res, next) {
   }
 });
 
+/* xblockly 新版本号接口 */
+router.get('/xblockly-update', function(req, res, next) {
+  res.json({
+    version: '1.0.3',
+    packagePath: '/download/app.zip'
+  });
+});
+
 module.exports = router;
