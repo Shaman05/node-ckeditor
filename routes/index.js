@@ -70,7 +70,11 @@ router.get('/edit', function(req, res, next) {
 router.get('/xblockly-update', function(req, res, next) {
   res.json({
     version: '1.0.3',
-    packagePath: '/download/app.zip'
+    packagePath: '/download/app.zip',
+    files: {
+      'xblockly.css': 'style/xblockly.css',
+      'xblockly.css.map': 'style/xblockly.css.map',
+    }
   });
 });
 
