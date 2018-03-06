@@ -72,8 +72,8 @@ router.get('/xblockly-update', function(req, res, next) {
     version: '1.0.3',
     packagePath: '/download/app.zip',
     files: {
-      'xblockly.css': 'style/',
-      'xblockly.css.map': 'style/',
+      'xblockly.css': 'pages/style/',
+      'xblockly.css.map': 'pages/style/',
     }
   });
 });
