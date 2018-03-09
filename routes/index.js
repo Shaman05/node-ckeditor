@@ -78,4 +78,10 @@ router.get('/xblockly-update', function(req, res, next) {
   });
 });
 
+/* xblockly 新版本号接口 */
+router.get('/getPackage', function(req, res, next) {
+    let stat = fs.lstatSync(path.resolve(__dirname, '../public/download/XBlockly-package.zip'));
+    res.json(stat);
+});
+
 module.exports = router;
